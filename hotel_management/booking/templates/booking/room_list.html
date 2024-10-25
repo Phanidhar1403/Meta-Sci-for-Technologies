@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room List</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Kanha Hotels</h1>
+    <div class="container">
+        <h2>Available Rooms</h2>
+        <div class="room-list">
+            {% for room in rooms %}
+            <div class="room-card">
+                <h3>Room {{ room.room_number }} ({{ room.get_room_type_display }})</h3>
+                <p>Floor: {{ room.floor_number }}</p>
+                <p>Price: ${{ room.price }}</p>
+                <a href="{% url 'book_room' room.id %}" class="btn">Book Now</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- About Us Card -->
+        <div class="card about-us">
+            <h2>About Us</h2>
+            <p>Welcome to Kanha Hotels! We offer a range of services to ensure you have a comfortable stay. Our team is dedicated to providing excellent hospitality and making your visit memorable.</p>
+        </div>
+
+        <!-- Contact Us Card -->
+        <div class="card contact-us">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+            <p>Email: info@kanhahotels.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Kanha St, City, Country</p>
+        </div>
+    </div>
+</body>
+</html>

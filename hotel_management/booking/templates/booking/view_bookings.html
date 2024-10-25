@@ -1,0 +1,26 @@
+{% load static %}
+<!-- booking/templates/booking/view_bookings.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>Your Bookings</h1>
+    <ul>
+        {% for booking in bookings %}
+            <li>
+                {{ booking.room.room_type }} - ₹{{ booking.room.cost }}
+                <form action="{% url 'cancel_booking' booking.id %}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Cancel Booking</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'room_list' %}">Book a New Room</a>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Room</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Book Room {{ room.room_number }}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <label for="customer_name">Customer Name:</label>
+                <input type="text" id="customer_name" name="customer_name" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="P-No">P-No:</label>
+                <input type="text" id="P-No" name="P-No" required>
+            </div>
+            <div>
+                <lable for="id">Id:</lable>
+                <input type="text" Id="id" name="id" required>
+            </div>
+            <div>
+                <label for="check_in">Check-In Date:</label>
+                <input type="date" id="check_in" name="check_in" required>
+            </div>
+            <div>
+                <label for="check_out">Check-Out Date:</label>
+                <input type="date" id="check_out" name="check_out" required>
+            </div>
+            <button type="submit">Book Room</button>
+        </form>
+
+
+    </div>
+</body>
+</html>
